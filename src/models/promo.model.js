@@ -188,8 +188,9 @@ class Promo {
                 } else{
                     cb({ kind: "out of stock" }, null);
                 }
+            } else{
+                cb({ kind: "not found" }, null);
             }
-            // cb({ kind: "not_found" }, null);
         })
     }
 }

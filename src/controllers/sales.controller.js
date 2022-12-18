@@ -29,12 +29,22 @@ exports.sales = (req, res) => {
                 if (resproduk.length) {
                     Promo.checkPromo(produk[i].id, produk[i].qty,(err, dataPromo) => {
                         if (err) {
+                            if (err.kind === "not found") {
+                                res.status(404).send({
+                                    status: 'error',
+                                    message: `Product Not Found`
+                                });
+                            } else if (err.kind === "out of stock"){
+                                res.status(500).send({
+                                    status: 'error',
+                                    message: `Product Out of Stock`
+                                });
+                            }
                             res.status(500).send({
                                 status: "error",
                                 message: err.message
                             });
                         } else {
-                            console.log(dataPromo)
                             total += dataPromo.total
                             disc += dataPromo.disc
                             if (dataPromo.tot_promo > 0){
