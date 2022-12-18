@@ -42,7 +42,7 @@ Sales expects
         {
             id: int,
             qty: int
-        },
+        }
     ]    
 }
 
