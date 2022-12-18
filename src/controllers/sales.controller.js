@@ -34,7 +34,7 @@ exports.sales = (req, res) => {
                                 message: err.message
                             });
                         } else {
-
+                            console.log(dataPromo)
                             total += dataPromo.total
                             disc += dataPromo.disc
                             if (dataPromo.tot_promo > 0){
@@ -55,11 +55,13 @@ exports.sales = (req, res) => {
                             completedCount += 1;
                             // if (i == tot_produk - 1){
                             if (completedCount == tot_produk){
-                                let allPromo = promo.map(value => value.name)
-                                nama_promo = allPromo.join()
+                                if (promo.length > 0){
+                                    let allPromo = promo.map(value => value.name)
+                                    nama_promo = allPromo.join()
+                                    sale.nama_promo = nama_promo
+                                }
                                 sale.total = total
                                 sale.disc = disc
-                                sale.nama_promo = nama_promo
                                 Sale.create(sale, (err, data) => {
                                     if (err) {
 
@@ -100,6 +102,7 @@ exports.sales = (req, res) => {
                                             } else {
                                                 let detail = dataDetail.newSalesDetail
                                                 let tot_promo = promo.length
+                                                console.log(tot_promo)
                                                 if (tot_promo > 0){
                                                     let countPromo = 0
                                                     for (let k = 0;k < tot_promo;k++) {
@@ -132,10 +135,20 @@ exports.sales = (req, res) => {
                                                             }
                                                         })
                                                     }
+                                                } else{
+                                                    res.status(201).send({
+                                                        status: "success",
+                                                        data: {
+                                                            data,
+                                                            detail
+                                                        }
+                                                    });
                                                 }
                                             }
                                         });
+
                                     }
+
                                 });
                             }
                         }

@@ -138,6 +138,8 @@ class Promo {
                                                         }
                                                     }else{
                                                         cb(null, {
+                                                            id_promo: null,
+                                                            nm_promo: null,
                                                             tot_promo: 0,
                                                             disc: 0,
                                                             total: tot_beli
@@ -145,6 +147,8 @@ class Promo {
                                                     }
                                                 } else{
                                                     cb(null, {
+                                                        id_promo: null,
+                                                        nm_promo: null,
                                                         tot_promo: 0,
                                                         disc: 0,
                                                         total: tot_beli
@@ -152,6 +156,8 @@ class Promo {
                                                 }
                                             } else{
                                                 cb(null, {
+                                                    id_promo: null,
+                                                    nm_promo: null,
                                                     tot_promo: 0,
                                                     disc: 0,
                                                     total: tot_beli
@@ -159,6 +165,8 @@ class Promo {
                                             }
                                         } else{
                                             cb(null, {
+                                                id_promo: null,
+                                                nm_promo: null,
                                                 tot_promo: 0,
                                                 disc: 0,
                                                 total: tot_beli
@@ -168,6 +176,8 @@ class Promo {
                                 })
                             } else{
                                 cb(null, {
+                                    id_promo: null,
+                                    nm_promo: null,
                                     tot_promo: 0,
                                     disc: 0,
                                     total: tot_beli
